@@ -29,11 +29,11 @@ public class CoinTest extends TestSuite {
             new Test(group + "8 from 1 4 5 is 2", () -> {
                 expectEqual(changer.minCoins(8, Set.of(1, 4, 5)), 2);
             }),
-            new Test(group + "159 from 30 8 1 31 is 6", () -> {
-                expectEqual(changer.minCoins(159, Set.of(30, 8, 1, 31)), 6);
-            }),
             new Test(group + "50 from 1 should be 50", () -> {
                 expectEqual(changer.minCoins(50, Set.of(1)), 50);
+            }),
+            new Test(group + "159 from 30 8 1 31 is 6", () -> {
+                expectEqual(changer.minCoins(159, Set.of(30, 8, 1, 31)), 6);
             }),
             new Test(group + "3115 from 80 82 49 47 139 3 1 2 should be 25", () -> {
                 expectEqual(changer.minCoins(3115, Set.of(80, 82, 49, 47, 139, 3, 1, 2)), 25);
@@ -43,7 +43,7 @@ public class CoinTest extends TestSuite {
 
     @Override public Test[] getTests() {
         var topDownTests = tests("Top down: ", new CoinChanger.TopDown()).stream();
-        var bottomUpTests = tests("Bottom up: ", new CoinChanger.BottomUp()).stream();
+        var bottomUpTests = tests("Bottom up: ", new CoinChanger.BottomUp()).stream();   
         return Stream.concat(topDownTests, bottomUpTests).toArray(Test[]::new);
     }
 }
